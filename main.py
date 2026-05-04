@@ -72,37 +72,28 @@ def prewarm(proc: JobProcess):
 
 server.setup_fnc = prewarm
 
-@server.rtc_session()
+@server.rtc_session(agent_name="Parker-25d0")
 async def entrypoint(ctx: JobContext):
     session = AgentSession(
-        stt=google.beta.realtime.RealtimeModel(
-            voice="Aoede",
-            temperature=0.8,
-        ),
         llm=google.beta.realtime.RealtimeModel(
             voice="Aoede",
-            temperature=0.8,
-        ),
-        tts=google.beta.realtime.RealtimeModel(
-            voice="Aoede",
-            temperature=0.8,
         ),
         turn_handling=TurnHandlingOptions(turn_detection=MultilingualModel()),
         vad=ctx.proc.userdata["vad"],
-        preemptive_generation=True,
+        preemptive_generation=False,
     )
 
-    # await session.start(
-    #     agent=DefaultAgent(),
-    #     room=ctx.room,
-    #     room_options=room_io.RoomOptions(
-    #         audio_input=room_io.AudioInputOptions(
-    #             noise_cancellation=ai_coustics.audio_enhancement(
-    #                 model=ai_coustics.EnhancerModel.QUAIL_VF_L,
-    #             ),
-    #         ),
-    #     ),
-    # )
+    await session.start(
+        agent=DefaultAgent(),
+        room=ctx.room,
+        room_options=room_io.RoomOptions(
+            audio_input=room_io.AudioInputOptions(
+                noise_cancellation=ai_coustics.audio_enhancement(
+                    model=ai_coustics.EnhancerModel.QUAIL_VF_L,
+                ),
+            ),
+        ),
+    )
 
 
 if __name__ == "__main__":
