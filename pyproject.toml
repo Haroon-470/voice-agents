@@ -1,0 +1,20 @@
+[project]
+name = "voice-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "duckduckgo-search>=8.1.1",
+    "livekit>=1.1.7",
+    "livekit-agents>=1.5.7",
+    "livekit-plugins-ai-coustics>=0.2.11",
+    "livekit-plugins-deepgram>=1.5.7",
+    "livekit-plugins-google>=1.5.7",
+    "livekit-plugins-groq>=1.5.7",
+    "livekit-plugins-noise-cancellation>=0.2.5",
+    "livekit-plugins-silero>=1.5.7",
+    "livekit-plugins-turn-detector>=1.5.7",
+    "pandas>=3.0.2",
+    "python-dotenv>=1.2.2",
+]
