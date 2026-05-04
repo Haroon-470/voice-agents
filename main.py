@@ -72,7 +72,7 @@ def prewarm(proc: JobProcess):
 
 server.setup_fnc = prewarm
 
-@server.rtc_session(agent_name="Parker-25d0")
+@server.rtc_session()
 async def entrypoint(ctx: JobContext):
     session = AgentSession(
         llm=google.beta.realtime.RealtimeModel(
